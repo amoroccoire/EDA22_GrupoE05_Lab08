@@ -30,7 +30,7 @@
 </theader>
 <tbody>
 <tr><td>ASIGNATURA:</td><td colspan="5">Estructuras de Datos y Algoritmos</td></tr>
-<tr><td>TÍTULO DE LA PRÁCTICA:</td><td colspan="5">Django</td></tr>
+<tr><td>TÍTULO DE LA PRÁCTICA:</td><td colspan="5">Grafos</td></tr>
 <tr>
 <td>NÚMERO DE PRÁCTICA:</td><td>08</td><td>AÑO LECTIVO:</td><td>2022 A</td><td>NRO. SEMESTRE:</td><td>III</td>
 </tr>
@@ -126,11 +126,6 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
     ![Lista de Adyacencia](Images/imagen2.png)
 
-* Metodo para saber si un grafo esta incluido en otro
-
-    ```
-    algo
-    ```
 II. SOLUCIÓN DEL CUESTIONARIO
 
 * ¿Cuantas variantes del algoritmo de Dijkstra hay y cuál es la diferencia entre ellas?
