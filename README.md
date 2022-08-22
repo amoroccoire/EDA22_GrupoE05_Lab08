@@ -62,9 +62,10 @@
 I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
 
-* La clase NodoGrafo tiene los atributos: padre (Nodo de tipo grafo), estado (booleano), lista(Lista enlazada)
+* La clase ImplementacionGrafo/NodoGrafo.java tiene los atributos: padre (Nodo de tipo grafo), estado (booleano), lista(Lista enlazada)
 
-    ```private NodoGrafo<T, N> padre;
+    ```
+    private NodoGrafo<T, N> padre;
 	private boolean estado;
 	private Lista<T, N> lista;
 	
@@ -78,7 +79,8 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
     Se ha creado manualmente la lista enlazada, cada uno de sus nodos almacena dos valores, el primero representa el número del nodo y el segundo valor el peso de su arista a uno de los nodos adyacentes
 
-    ```private T dato;
+    ```
+    private T dato;
     private U peso;
     private Node<T, U> nextNode;
   
@@ -87,9 +89,11 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     	peso = y;
     }
     ```
-    Los otros métodos del nodo se mantienen igual con ligeras variaciones, al igual que la clase
+    Los otros métodos del nodo se mantienen igual con ligeras variaciones, al igual que los métodos de la clase Lista.
 
-* URL video operaciones CRUD : https://drive.google.com/file/d/1_4AbNt61LwxCEWrP3p13wMHAaT_9Dat1/view?usp=sharing
+* Algoritmo BFS
+    Para elaborar el algoritmo se ha traducido el pesudocodigo del documento presentado por el docente, el cual se describe asi:
+
     
 * Paso 1: **Agregar .gitignore**
     
