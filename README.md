@@ -100,6 +100,16 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     ```
     Recibe los paramteros valor; que representa el contenido del nodo, peso; representa el peso de la arista del nodo adyacente e indice que ayuda a ubicar al nodo en el array, en los test, el parametro valor sera igual al indice.
 
+    Para probar el metodo BFS se creo el siguiente grafo:
+    ![GrafoPrueba](Images/imagen4.png)
+
+    Ejecute la clase [Test1.java](ImplementacionGrafo/Test1.java) e ingrese el grafo via comando, la soguiente captura es la prueba con el mismo grafo presentado anteriormente
+
+    <img src="Images/image3.png" alt="prueba" width="147" hight="444"/>
+
+    Como resultado en la última linea se ve el orden: 1 4 2 3
+
+
 * Algoritmo BFS
     Para elaborar el algoritmo se ha traducido el pesudocodigo del documento presentado por el docente. Este método recibe como parametro un indice para saber con que nodo empezar primero.
     ```
