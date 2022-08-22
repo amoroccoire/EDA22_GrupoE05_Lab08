@@ -58,5 +58,6 @@ public class Grafo<T, N> {
 				puntero = puntero.getNextNode();
 			}
         }
+        return orden;
     }
 }
