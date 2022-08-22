@@ -29,21 +29,17 @@
 <tr><th colspan="6">INFORMACIÓN BÁSICA</th></tr>
 </theader>
 <tbody>
-<tr><td>ASIGNATURA:</td><td colspan="5">Programación Web 2</td></tr>
+<tr><td>ASIGNATURA:</td><td colspan="5">Estructuras de Datos y Algoritmos</td></tr>
 <tr><td>TÍTULO DE LA PRÁCTICA:</td><td colspan="5">Django</td></tr>
 <tr>
-<td>NÚMERO DE PRÁCTICA:</td><td>05</td><td>AÑO LECTIVO:</td><td>2022 A</td><td>NRO. SEMESTRE:</td><td>III</td>
+<td>NÚMERO DE PRÁCTICA:</td><td>08</td><td>AÑO LECTIVO:</td><td>2022 A</td><td>NRO. SEMESTRE:</td><td>III</td>
 </tr>
 <tr>
-<td>FECHA DE PRESENTACIÓN:</td><td colspan="2">12-Jun-2022</td><td>HORA DE PRESENTACIÓN:</td><td colspan="2">11:55</td>
+<td>FECHA DE PRESENTACIÓN:</td><td colspan="2">21-Ago-2022</td><td>HORA DE PRESENTACIÓN:</td><td colspan="2">23:55</td>
 </tr>
 <tr><td colspan="4">INTEGRANTE (s):
 <ul>
-<li>Diaz/Portilla, Carlo Rodrigo - cdiazpor@unsa.edu.pe</li>
 <li>Moroccoire/Pacompia, Anthony Marcos - amoroccoire@unsa.edu.pe</li>
-<li>Ticona/Hareth, Anthony Joaquín - aticonaha@unsa.edu.pe</li>
-<li>-</li>
-<li>-</li>
 </ul>
 </td>
 <td>NOTA:</td><td>Pendiente</td>
@@ -64,30 +60,35 @@
 ---
 
 I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
-* La organización del repositorio es la siguiente
-    ```sh
-	   └───Laboratorio5-Pweb2
-	    ├───blog
-	    │    ├───migrations
-	    │	 │    ├───0001_initial.py
-	    │	 │    └───__init__.py
-	    │    ├───__init__.py
-	    │    ├───admin.py
-	    │    ├───apps.py
-	    │    ├───models.py
-	    │    ├───tests.py
-	    │    └───views.py
-	    ├───mysite
-	    │    ├───__init__.py
-	    │    ├───asgi.py
-	    │    ├───settings.py
-	    │    ├───urls.py
-	    │    └───wsgi.py
-	    ├───.gitignore
-	    ├───README.md
-	    ├───manage.py
-	    └───pyvenv.cfg
+
+
+* La clase NodoGrafo tiene los atributos: padre (Nodo de tipo grafo), estado (booleano), lista(Lista enlazada)
+
+    ```private NodoGrafo<T, N> padre;
+	private boolean estado;
+	private Lista<T, N> lista;
+	
+	public NodoGrafo() {
+		estado = false;
+		lista = new Lista<T, N>();
+		padre = null;
+	}
     ```
+    Asimismo contiene metodos, entre los cuales se encuentra el método "marcar()" y "desmarcar()", que funcionan para cambiar el estado del nodo cuando es visitado o necesita ser reiniciado.
+
+    Se ha creado manualmente la lista enlazada, cada uno de sus nodos almacena dos valores, el primero representa el número del nodo y el segundo valor el peso de su arista a uno de los nodos adyacentes
+
+    ```private T dato;
+    private U peso;
+    private Node<T, U> nextNode;
+  
+    public Node(T e, U y) {
+    	dato = e;
+    	peso = y;
+    }
+    ```
+    Los otros métodos del nodo se mantienen igual con ligeras variaciones, al igual que la clase
+
 * URL video operaciones CRUD : https://drive.google.com/file/d/1_4AbNt61LwxCEWrP3p13wMHAaT_9Dat1/view?usp=sharing
     
 * Paso 1: **Agregar .gitignore**
