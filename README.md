@@ -62,7 +62,7 @@
 I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
 
-* La clase ImplementacionGrafo/NodoGrafo.java tiene los atributos: padre (Nodo de tipo grafo), estado (booleano), lista(Lista enlazada)
+* La clase [Link](ImplementacionGrafo/NodoGrafo.java "NodoGrafo.java") tiene los atributos: padre (Nodo de tipo grafo), estado (booleano), lista(Lista enlazada)
 
     ```
     private NodoGrafo<T, N> padre;
@@ -90,194 +90,50 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     }
     ```
     Los otros métodos del nodo se mantienen igual con ligeras variaciones, al igual que los métodos de la clase Lista.
+    Para conseguir la representación del grafo, se ha usado un arreglo simple de Nodos de tipo grafo, cuyo tamaño es determinado en el constructor de la clase [Link](ImplementacionGrafo/Grafo.java "Grafo.java"), el metodo es el siguiente:
+    ```
+    public void add(T valor, N peso, int indice) {
+		if (nodos[indice] == null)
+			nodos[indice] = new NodoGrafo<T, N>();
+		nodos[indice].agregarAdyacente(valor, peso);
+	}
+    ```
+    Recibe los paramteros valor; que representa el contenido del nodo, peso; representa el peso de la arista del nodo adyacente e indice que ayuda a ubicar al nodo en el array, en los test, el parametro valor sera igual al indice.
 
 * Algoritmo BFS
-    Para elaborar el algoritmo se ha traducido el pesudocodigo del documento presentado por el docente, el cual se describe asi:
+    Para elaborar el algoritmo se ha traducido el pesudocodigo del documento presentado por el docente. Este método recibe como parametro un indice para saber con que nodo empezar primero.
+    ```
+		for (int i = 0; i < nodos.length; i++)
+			distancia[i] = -1;
+	```
+    En esta seccion del codigo se inicializa al arreglo de distancias con valor -1
 
+    ```
+		nodos[valor].marcar();
+		orden += (valor + 1) + " ";
+		distancia[valor] = 0;
+    ```
+    En la primera linea se marca al indice del nodo pasado como parametro como true, luego se concatena a un String para hacer un registro de los nodos visitados y luego retornarlo, luego en un arreglo de int[] "distancia" con tamaño igual al del grafo se cambia la distancia a 0.
+
+    Mas adelante se inica una cola y se añade el indice pasado como parametro, luego mientras la cola no este vacia se obtendra la lista enlazada asociado al indice para luego hacer un recorrido que marcaracomo visitado o no al nodo adyacente.
     
-* Paso 1: **Agregar .gitignore**
-    
-    Para empezar con el repositorio, se agrega un archivo <code>.gitignore</code> con las siguientes rutas, especificadas en https://github.com/django/django/blob/main/.gitignore.
-    ```sh
-        *.egg-info
-        *.pot
-        *.py[co]
-        .tox/
-        __pycache__
-        MANIFEST
-        dist/
-        docs/_build/
-        docs/locale/
-        node_module/
-        test/coverage_html/
-        test/.coverage
-        build/
-        test/report/
-    ```
-    Estos serán los archivos que no necesitamos hacer <code>git add</code> y <code>git commit</code>
+* Solución del ejercicio del Grafo de Palabras
+    * Dibuje el grafo definido por las siguientes palabras: words, cords, corps, coops, crops, drops, drips, grips, gripe, grape, graph
 
-* Paso 2: **Activación del entorno virtual**
+    ![Grafo](Images/imagen1.png)
 
-    Para activar el entorno virtual usaremos <code>virtualenv</code> indicando que será un entorno virtual para python3, ejecutaremos el siguiente comando.
-    ```sh
-        ❯ virtualenv -p python3 .
-    ```
-    Este comando va a crear 2 carpetas <code>Lib/</code> y <code>Scripts/</code> y un archivo <code>pyvenv.cfg</code>. Agregamos <code>Lib/</code> y <code>Scripts/</code> al archivo <code>.gitignore</code> ya que estos varían dependiendo del sistema operativo y solo conservaremos el archivo <code>pyvenv.cfg</code> y luego haremos commit.
-    Activaremos el entorno virtual (Windows) con el siguiente comando:
-    ```sh
-        ❯ .\Scripts\activate.ps1
-    ```
-    
-* Paso 3: **Instalación Django**
+    *Mostrar la lista de adyacencia del grafo
 
-    Una vez con el entorno virtual activado, ejecutaremos el comando que instala Django:
-    ```sh
-        ❯ pip install Django
-    ```
-    Ahora para estar seguros de que nuestro entorno virtual tiene Django, usaremos el comando <code>pip freeze</code> y ahora notamos la versión de Django:
-    ```sh
-        ❯ pip freeze
-        asgiref==3.5.2
-        Django==4.0.5
-        sqlparse==0.4.2
-        tzdata==2022.1
-    ```
+    ![Lista de Adyacencia](Images/imagen2.png)
 
-* Paso 4: **Creación del proyecto**
+* Metodo para saber si un grafo esta incluido en otro
 
-    Para crear el proyecto con Django, usaremos el siguiente comando:
-    ```sh
-        ❯ django-admin startproject mysite .
     ```
-    Donde indicamos que vamos a crear un proyecto <code>startproject</code> que se va a llamar <code>mysite</code> y el <code>.</code> indicará que lo va a crear en el directorio actual.
-    Notamos que se ha creado un archivo <code>manage.py</code> y un directorio que tiene el nombre de nuestro proyecto <code>mysite</code>.
-
-* Paso 5: **Cambiar la configuración**
-
-    A continuación editaremos el archivo <code>vim mysite/settings.py</code> y vamos a cambiar la zona horaria y el idioma.
-    ```python
-        ...
-        LANGUAGE_CODE = 'es'
-        TIME_ZONE = 'America/Lima'
-        ...
+    algo
     ```
-
-* Paso 6: **Configurar la base de datos**
-
-    Asegurándonos que nos encontramos en el ruta actual del archivo <code>manage.py</code>, vamos a ejecutar el siguiente comando para crear una base de datos en nuestro blog:
-    ```sh
-        ❯ python manage.py migrate
-        Operations to perform:
-        Apply all migrations: admin, auth, contenttypes, sessions
-        Running migrations:
-        Applying contenttypes.0001_initial... OK
-        Applying auth.0001_initial... OK
-        Applying admin.0001_initial... OK
-        Applying admin.0002_logentry_remove_auto_add... OK
-        Applying admin.0003_logentry_add_action_flag_choices... OK
-        Applying contenttypes.0002_remove_content_type_name... OK
-        Applying auth.0002_alter_permission_name_max_length... OK
-        Applying auth.0003_alter_user_email_max_length... OK
-        Applying auth.0004_alter_user_username_opts... OK
-        Applying auth.0005_alter_user_last_login_null... OK
-        Applying auth.0006_require_contenttypes_0002... OK
-        Applying auth.0007_alter_validators_add_error_messages... OK
-        Applying auth.0008_alter_user_username_max_length... OK
-        Applying auth.0009_alter_user_last_name_max_length... OK
-        Applying auth.0010_alter_group_name_max_length... OK
-        Applying auth.0011_update_proxy_permissions... OK
-        Applying auth.0012_alter_user_first_name_max_length... OK
-        Applying sessions.0001_initial... OK
-    ```
-    Notaremos que nos aparece los <code>... OK</code>, entonces la base de datos está lista, también nos crea un nuevo archivo <code>db.sqlite3</code> el cual también agregaremos al archivo <code>.gitignore</code>.
-
-* Paso 7: **Creación de la aplicación**
-
-    En este paso vamos a crear una aplicación <code>blog</code>, entonces para crearla usaremos <code>startapp</code>:
-    ```sh
-        ❯ python manage.py startapp blog
-    ```
-    Este comando va a crear <code>startapp</code> una aplicación y para indicar el nombre usaremos <code>blog</code>.
-    Notaremos que se ha creado un nuevo directorio con la siguiente estructura:
-    ```sh
-        blog
-        ├── __init__.py
-        ├── admin.py
-        ├── apps.py
-        ├── migrations
-        │   └── __init__.py
-        ├── models.py
-        ├── tests.py
-        └── views.py
-    ```
-    Debido a que es una aplicación nueva, tenemos que indicar a Django que vamos a utilizarla, para esto vamos a editar el archivo <code>mysite/settings.py</code>:
-    ```python
-        INSTALLED_APPS = [
-            'django.contrib.admin',
-            'django.contrib.auth',
-            'django.contrib.contenttypes',
-            'django.contrib.sessions',
-            'django.contrib.messages',
-            'django.contrib.staticfiles',
-            'blog.apps.BlogConfig',
-        ]
-    ```
-    
-* Paso 8: **Creación del modelo Post**
-
-    Ahora vamos a definir las entradas de cada Post que hagamos en nuestro blog, para eso editaremos el archivo <code>blog/models.py</code>:
-    ```sh
-        ❯ vim .\blog\models.py
-    ```
-    ```python
-        from django.db import models
-        from django.conf import settings
-        from django.utils import timezone
-        # Create your models here.
-        class Post(models.Model):
-            author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-            title = models.CharField(max_length=200)
-            text = models.TextField()
-            created_date = models.DateTimeField(
-                    default=timezone.now)
-            published_date = models.DateTimeField(
-                    blank=True, null=True)
-            def publish(self):
-                self.published_date = time.now()
-                self.save()
-            def __str__(self):
-                return self.title
-    ```
-    Entonces, para cada entrada de nuestro blog tendrá un autor, título, texto y la fecha en la que se creó.
-
-* Paso 9: **Agregando los nuevos modelos**
-
-    Para agregar el nuevo modelo Post que acabamos de crear tendremos que ejecutar <code>makemigrations</code> y luego <code>migrate</code> de la siguiente manera:
-    ```sh
-        ❯ python manage.py makemigrations blog
-    ```
-    Aquí se preparó un archivo de migración y está listo para realizar un <code>migrate</code>:
-    ```sh
-        ❯ python manage.py migrate blog
-    ```
-    Vamos a saber que ya está listo por el <code>... OK</code>
-
-* Paso 10: **Registrar el modelo en admin**
-
-    Vamos a registrar el modelo Post en el admin de Django, para poder crear nuevas entradas en nuestro blog. Para eso vamos a editar el archivo <code>blog/admin.py</code> y lo registramos:
-    ```sh
-        ❯ vim .\blog\admin.py
-    ```
-    ```python
-        ...
-        admin.site.register(Post)
-        ...
-    ```
----
-
 II. SOLUCIÓN DEL CUESTIONARIO
 
-* ¿Cuál es un estándar de codificación para Python? Ejemplo: Para PHP en el proyecto Pear https://pear.php.net/manual/en/standards.php
+* ¿Cuantas variantes del algoritmo de Dijkstra hay y cuál es la diferencia entre ellas?
     
     Se definió una guía de estilo única descrita íntegramente en el Python Enhancement Proposal numero 8, abreviado como PEP 8. En esta se define al pie de la letra, cómo debería estar escrito nuestro código python: https://peps.python.org/pep-0008/#introduction
   
