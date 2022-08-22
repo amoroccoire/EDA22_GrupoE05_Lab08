@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Grafo<T, N> {
 
     private int[] distancia;
@@ -20,4 +23,36 @@ public class Grafo<T, N> {
 			nodos[indice] = new NodoGrafo<T, N>();
 		nodos[indice].agregarAdyacente(valor, peso);
 	}
+
+    public String BFS(int valor) {
+
+        for (int i = 0; i < nodos.length; i++)
+			distancia[i] = -1;
+
+        nodos[valor].marcar();
+		distancia[valor] = 0;
+
+        Queue<Integer> cola = new LinkedList<Integer>();
+		cola.add(valor);
+
+        while (!cola.isEmpty()) {
+
+            int indice = cola.poll();
+			Lista<T, N> lista = nodos[indice].getLista();
+			Node<T, N> puntero = lista.root;
+
+            while (puntero != null) {
+				
+				T index = puntero.getDato();
+
+				if (!nodos[(int) index - 1].getEstado()) {
+					nodos[(int) index - 1].marcar();
+					distancia[(int) index - 1] += distancia[indice];
+					nodos[(int) index - 1].setPadre(nodos[indice]); //establecer padre del nodo
+					cola.add((int) index - 1);
+				}
+				puntero = puntero.getNextNode();
+			}
+        }
+    }
 }
