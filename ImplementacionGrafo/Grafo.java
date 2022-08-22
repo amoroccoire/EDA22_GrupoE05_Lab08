@@ -25,11 +25,14 @@ public class Grafo<T, N> {
 	}
 
     public String BFS(int valor) {
+        
+        String orden = "";
 
         for (int i = 0; i < nodos.length; i++)
 			distancia[i] = -1;
 
         nodos[valor].marcar();
+        orden += (valor + 1) + " ";
 		distancia[valor] = 0;
 
         Queue<Integer> cola = new LinkedList<Integer>();
@@ -47,6 +50,7 @@ public class Grafo<T, N> {
 
 				if (!nodos[(int) index - 1].getEstado()) {
 					nodos[(int) index - 1].marcar();
+                    orden += index + " ";
 					distancia[(int) index - 1] += distancia[indice];
 					nodos[(int) index - 1].setPadre(nodos[indice]); //establecer padre del nodo
 					cola.add((int) index - 1);
