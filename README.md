@@ -62,7 +62,7 @@
 I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
 
-* La clase [Link](ImplementacionGrafo/NodoGrafo.java "NodoGrafo.java") tiene los atributos: padre (Nodo de tipo grafo), estado (booleano), lista(Lista enlazada)
+* La clase [NodoGrafo.java](ImplementacionGrafo/NodoGrafo.java "NodoGrafo.java") tiene los atributos: padre (Nodo de tipo grafo), estado (booleano), lista(Lista enlazada)
 
     ```
     private NodoGrafo<T, N> padre;
@@ -90,7 +90,7 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     }
     ```
     Los otros métodos del nodo se mantienen igual con ligeras variaciones, al igual que los métodos de la clase Lista.
-    Para conseguir la representación del grafo, se ha usado un arreglo simple de Nodos de tipo grafo, cuyo tamaño es determinado en el constructor de la clase [Link](ImplementacionGrafo/Grafo.java "Grafo.java"), el metodo es el siguiente:
+    Para conseguir la representación del grafo, se ha usado un arreglo simple de Nodos de tipo grafo, cuyo tamaño es determinado en el constructor de la clase [Grafo.java](ImplementacionGrafo/Grafo.java "Grafo.java"), el metodo es el siguiente:
     ```
     public void add(T valor, N peso, int indice) {
 		if (nodos[indice] == null)
@@ -122,7 +122,7 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
     ![Grafo](Images/imagen1.png)
 
-    *Mostrar la lista de adyacencia del grafo
+    * Mostrar la lista de adyacencia del grafo
 
     ![Lista de Adyacencia](Images/imagen2.png)
 
@@ -135,48 +135,24 @@ II. SOLUCIÓN DEL CUESTIONARIO
 
 * ¿Cuantas variantes del algoritmo de Dijkstra hay y cuál es la diferencia entre ellas?
     
-    Se definió una guía de estilo única descrita íntegramente en el Python Enhancement Proposal numero 8, abreviado como PEP 8. En esta se define al pie de la letra, cómo debería estar escrito nuestro código python: https://peps.python.org/pep-0008/#introduction
-  
-* ¿Qué diferencias existen entre EasyInstall, pip y PyPM?
+    Existen muchas variantes del algoritmo, la versión original encontraba la ruta más corta entre dos nodos, pero una variante más común: fija un solo nodo como el nodo "fuente" y encuentra las rutas más cortas desde la fuente a todos los demás nodos.
 
-   EasyInstall es una interfaz obsoleta, que salió como parte de las herramientas de configuración, pip salió después, como una alternativa a easyInstall. Es el actual instalador de paquetes para Python, y viene instalado en Python 2 >=2.7.9 o Python 3 >=3.4. EasyInstall no es un administrador de paquetes completo, no puede listar paquetes locales ni actualizarlos todos. Pip y Python Package Manager (PyPM) son aplicaciones de Python diseñadas para cumplir una función similar a EasyInstall. PyPM no es gratuito y solo se puede usar con la distribución ActivePython de ActiveState, se suspendió y ya no es compatible. Pip es ahora el método preferido para administrar e instalar paquetes en ActivePython, además que nos permite la instalación de los entornos virtuales.
-
-* En un proyecto Django que se debe ignorar para usar git. Vea: https://github.com/django/django/blob/main/.gitignore. ¿Qué otros tipos de archivos se deberían agregar a este archivo?
-
-  En un proyecto Django debemos ignorar los siguientes archivos:
-  ```sh
-        *.egg-info
-        *.pot
-        *.py[co]
-        .tox/
-        __pycache__
-        MANIFEST
-        dist/
-        docs/_build/
-        docs/locale/
-        node_module/
-        test/coverage_html/
-        test/.coverage
-        build/
-        test/report/
-    ```
-    Adicionalmente, si tenemos archivos automáticamente generados por algún IDE debemos ignorarlos de la siguiente manera <code>$GIT_DIR/info/exclude</code>.
+    Tambien se usa ampliamente en los protocolos de enrutamiento de red, más en IS-IS (Intermediate System to Intermediate System) y Open Shortest Path First (OSPF). 
   
-* Utilice <code>python manage.py shell</code> para agregar objetos. ¿Qué archivos se modificaron al agregar más objetos?
+* Invetigue sobre los ALGORITMOS DE CAMINOS MINIMOS e indique, ¿Qué similitudes encuentra, qué diferencias, en qué casos utilizar y porque?
 
-    <code>db.sqlite3</code>: la base de datos.
-  
-  
+   Las similitudes son: encontrar caminos entre 2 nodos de manera que el costo de los nodos que lo consituyen sea el mínimo posible, esto signofica que permiten estudiar distancias, tiempos de tranporte, etc. En su implementación es posible representarlo con matrices de adyacencia.
+
+   La diferencia esta los métodos que usan, por ejemplo el Algoritmo de Busqueda A* usa la heurística para agilizar la busqueda, otros algoritmos son mejores en grafos con muchos nodos, y también depende del enfoque al que se inclinan, por ejemplo el Algoritmo de Viterbi resuelve el problema del camino estocástico más corto con un peso probabilístico adicional en cada nodo.
+
 ---
 
 III. CONCLUSIONES
 
-* Los entornos virtuales son de gran ayuda para la realización de proyectos, nos ayudan a crear aplicaciones distintamente de los archivos del sistema.
+* Los algoritmos para recorrer un grafo pueden llegar a ser complejos en su comprension e implementación
 
-* Django nos hace más fácil la creación de aplicaciones web, nos permite ir desde un desarrollo sencillo hasta uno más complejo con la misma funcionalidad, gracias a su organizada interfaz.
+* Es notorio que muchos de los algoritmos de recorridos minimos son usado ampliamente en distintos campos de la ciencia y esta presente en nuestras visas
 
-* Los modelos de nuestras aplicaciones son nuestra única fuente de datos, las migraciones se encargan de hacer las bases de datos de estos modelos.
-    
 ---
     
 ## RETROALIMENTACIÓN GENERAL
@@ -187,6 +163,7 @@ III. CONCLUSIONES
     
 ### REFERENCIAS Y BIBLIOGRAFÍA
 <ul>
-    <li>https://tutorial.djangogirls.org/es/django_start_project/</li>
-    <li>https://github.com/django/django/blob/main/.gitignore</li>
+    <li>Escuela de Pedagogía en Educación Matemática, Marcelino Álvarez, et.al.,
+http://repobib.ubiobio.cl/jspui/bitstream/123456789/1953/3/Alvarez_Nunez_Marcelino.pdf</li>
+    <li>http://www.oia.unsam.edu.ar/wp-content/uploads/2017/11/dijkstra-prim.pdf</li>
 </ul>
