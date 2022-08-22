@@ -100,16 +100,6 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     ```
     Recibe los paramteros valor; que representa el contenido del nodo, peso; representa el peso de la arista del nodo adyacente e indice que ayuda a ubicar al nodo en el array, en los test, el parametro valor sera igual al indice.
 
-    Para probar el metodo BFS se creo el siguiente grafo:
-    ![GrafoPrueba](Images/imagen4.png)
-
-    Ejecute la clase [Test1.java](ImplementacionGrafo/Test1.java) e ingrese el grafo via comando, la soguiente captura es la prueba con el mismo grafo presentado anteriormente
-
-    <img src="Images/image3.png" alt="prueba" width="147" hight="444"/>
-
-    Como resultado en la última linea se ve el orden: 1 4 2 3
-
-
 * Algoritmo BFS
     Para elaborar el algoritmo se ha traducido el pesudocodigo del documento presentado por el docente. Este método recibe como parametro un indice para saber con que nodo empezar primero.
     ```
@@ -126,6 +116,17 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     En la primera linea se marca al indice del nodo pasado como parametro como true, luego se concatena a un String para hacer un registro de los nodos visitados y luego retornarlo, luego en un arreglo de int[] "distancia" con tamaño igual al del grafo se cambia la distancia a 0.
 
     Mas adelante se inica una cola y se añade el indice pasado como parametro, luego mientras la cola no este vacia se obtendra la lista enlazada asociado al indice para luego hacer un recorrido que marcaracomo visitado o no al nodo adyacente.
+
+    Para probar el metodo BFS se creo el siguiente grafo:
+    ![GrafoPrueba](Images/imagen4.png)
+
+    Ejecute la clase [Test1.java](ImplementacionGrafo/Test1.java) e ingrese el grafo via comando, la soguiente captura es la prueba con el mismo grafo presentado anteriormente
+
+    <img src="Images/image3.png" alt="prueba" width="347" hight="644"/>
+
+    Como resultado en la última linea se ve el orden: 1 4 2 3
+
+    No se ha conseguido implementar existosamente el algoritmo DFS y Dijkstra, por ello no se ecuentra en los archivos.
     
 * Solución del ejercicio del Grafo de Palabras
     * Dibuje el grafo definido por las siguientes palabras: words, cords, corps, coops, crops, drops, drips, grips, gripe, grape, graph
